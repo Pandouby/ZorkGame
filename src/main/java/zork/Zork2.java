@@ -1,4 +1,4 @@
-package ch.bbw.zork;
+package zork;
 
 public class Zork2 {
 
