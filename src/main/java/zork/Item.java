@@ -1,11 +1,11 @@
 package zork;
 
-public class Items {
+public class Item {
     private String description;
     private String name;
     private int weight;
 
-    public Items(String description, String name, int weight) {
+    public Item(String description, String name, int weight) {
         this.description = description;
         this.name = name;
         this.weight = weight;
