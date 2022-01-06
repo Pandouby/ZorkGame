@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 
 public class Player {
     private int health;
-    private ArrayList<Items> inventory;
+    private ArrayList<Item> inventory;
     private String name;
     private int weight;
 
-    public Player(int health, ArrayList<Items> inventory, String name) {
-        Items punch = new Items("Your own fists", "PUNCH", 0);
+    public Player(int health, ArrayList<Item> inventory, String name) {
+        Item punch = new Item("Your own fists", "PUNCH", 0);
         this.health = health;
         this.inventory = inventory;
         this.name = name;
@@ -27,11 +27,11 @@ public class Player {
         this.health = health;
     }
 
-    public ArrayList<Items> getInventory() {
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
 
-    public void setInventory(ArrayList<Items> inventory) {
+    public void setInventory(ArrayList<Item> inventory) {
         this.inventory = inventory;
     }
 
@@ -42,7 +42,7 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-    public Boolean addToInventory(Items item){
+    public Boolean addToInventory(Item item){
         if(this.weight - item.getWeight() >= 0){
             this.inventory.add(item);
             return false;
@@ -50,8 +50,8 @@ public class Player {
         return true;
     }
 
-    public void dropItem(Items item){
-        List<Items> newList = this.inventory.stream().filter(e -> item.getName().equals(e)).collect(Collectors.toList());
-        setInventory((ArrayList<Items>) newList);
+    public void dropItem(Item item){
+        List<Item> newList = this.inventory.stream().filter(e -> item.getName().equals(e)).collect(Collectors.toList());
+        setInventory((ArrayList<Item>) newList);
     }
 }
