@@ -28,8 +28,8 @@ public class Fight {
         this.player = player;
     }
 
-    public void attackPlayer(){
-        this.player.listItems();
-        System.out.println(">> Selecct you're Item");
+    public void fight() {
+        Scanner scanner = new Scanner(System.in);
+        scanner.close();
     }
 }
