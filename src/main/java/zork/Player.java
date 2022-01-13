@@ -55,11 +55,19 @@ public class Player {
         setInventory((ArrayList<Item>) newList);
     }
 
-    public int attack(Item item){
-        if(this.inventory.contains(item)){
-            return item.getDmg();
+    public int attack(String selectedItem){
+        int dmg = 0;
+        while(dmg == 0) {
+            listItems();
+            System.out.println(">> Select you're Item");
+            Item item = getInventory().stream().filter(it -> it.getName().equals(selectedItem)).findAny().orElse(null);
+            if (item != null){
+                dmg = item.getDmg();
+            } else {
+                System.out.println("Item doesn't exist");
+            }
         }
-        return 0;
+        return dmg;
     }
 
     public void listItems(){
