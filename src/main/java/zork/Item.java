@@ -4,11 +4,21 @@ public class Item {
     private String description;
     private String name;
     private int weight;
+    private int dmg;
 
-    public Item(String description, String name, int weight) {
+    public Item(String description, String name, int weight, int dmg) {
         this.description = description;
         this.name = name;
+        this.dmg = dmg;
         this.weight = weight;
+    }
+
+    public int getDmg() {
+        return dmg;
+    }
+
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
     }
 
     public String getDescription() {

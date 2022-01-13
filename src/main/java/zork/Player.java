@@ -11,7 +11,7 @@ public class Player {
     private int weight;
 
     public Player(int health, ArrayList<Item> inventory, String name) {
-        Item punch = new Item("Your own fists", "PUNCH", 0);
+        Item punch = new Item("Your own fists", "PUNCH", 0, 10);
         this.health = health;
         this.inventory = inventory;
         this.name = name;
@@ -53,5 +53,12 @@ public class Player {
     public void dropItem(Item item){
         List<Item> newList = this.inventory.stream().filter(e -> item.getName().equals(e)).collect(Collectors.toList());
         setInventory((ArrayList<Item>) newList);
+    }
+
+    public int attack(Item item){
+        if(this.inventory.contains(item)){
+            return item.getDmg();
+        }
+        return 0;
     }
 }
