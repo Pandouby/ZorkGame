@@ -61,4 +61,8 @@ public class Player {
         }
         return 0;
     }
+
+    public void listItems(){
+        this.inventory.stream().forEach(System.out::println);
+    }
 }
