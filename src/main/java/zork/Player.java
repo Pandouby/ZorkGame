@@ -11,7 +11,7 @@ public class Player {
     private int weight;
 
     public Player(int health, ArrayList<Item> inventory, String name) {
-        Item punch = new Item("Your own fists", "PUNCH", 0, 10);
+        Item punch = new Item("Your own fists", "PUNCH", 0, 10, 0);
         this.health = health;
         this.inventory = inventory;
         this.name = name;
