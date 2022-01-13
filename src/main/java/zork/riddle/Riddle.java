@@ -2,7 +2,6 @@ package zork.riddle;
 
 public interface Riddle {
 
-    public void start();
-    public void riddle();
-
+    public boolean start();
+    public boolean riddle();
 }
