@@ -4,10 +4,16 @@ import zork.riddle.Riddle;
 
 public class Lock {
     private Riddle riddle;
+    private Item key;
     private boolean locked;
 
     public Lock(Riddle riddle) {
         this.riddle = riddle;
+        locked = true;
+    }
+
+    public Lock(Item key) {
+        this.key = key;
         locked = true;
     }
 
@@ -27,11 +33,19 @@ public class Lock {
         this.locked = locked;
     }
 
-    public Boolean lockUnlock () {
-        if(locked){
-            locked = false;
-        }else {
-            locked = true;
+    public Boolean lockUnlock (Item key) {
+        if(this.key == null) {
+            if(locked){
+                locked = false;
+            }else {
+                locked = true;
+            }
+        }else if(this.key.equals(key)){
+            if(locked){
+                locked = false;
+            }else {
+                locked = true;
+            }
         }
         return locked;
     }
