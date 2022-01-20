@@ -36,9 +36,15 @@ public class Fight {
             System.out.println("Select your Item: ");
             player.listItems();
             String selectedItem = scanner.nextLine();
-            int dmg = player.attack(selectedItem);
-            System.out.println("You have made this much damage: " + dmg);
-            enemy.setHealth(enemy.getHealth() - dmg);
+            Item itemSelected = player.checkIfItemExists(selectedItem);
+            if (itemSelected == null){
+                while (itemSelected == null){
+                    String newName = scanner.nextLine();
+                    itemSelected = player.checkIfItemExists(newName);
+                }
+            }
+            System.out.println("You have made this much damage: " + itemSelected.getDmg());
+            enemy.setHealth(enemy.getHealth() - itemSelected.getDmg());
             System.out.println("Enemy is attacking...");
             int temp = (Math.random() <= 0.5) ? 1 : 2;
             player.setHealth(player.getHealth() - (enemy.getDamage() * temp * getHighestResistance().getResitence()));

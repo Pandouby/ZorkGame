@@ -1,5 +1,6 @@
 package zork;
 
+import java.lang.constant.Constable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +11,7 @@ public class Player {
     private String name;
     private double weight;
 
-    public Player(int health, ArrayList<Item> inventory, String name) {
+    public Player(double health, ArrayList<Item> inventory, String name) {
         Item punch = new Item("Your own fists", "PUNCH", 0, 10, 0);
         this.health = health;
         this.inventory = inventory;
@@ -42,35 +43,47 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-    public Boolean addToInventory(Item item){
-        if(this.weight - item.getWeight() >= 0){
-            this.inventory.add(item);
-            return false;
-        }
-        return true;
+
+    public double getWeight() {
+        return weight;
     }
 
-    public void dropItem(Item item){
-        List<Item> newList = this.inventory.stream().filter(e -> item.getName().equals(e)).collect(Collectors.toList());
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public Boolean addToInventory(Item item) {
+        if (weight - item.getWeight() >= 0) {
+            inventory.add(item);
+            setWeight(getWeight() - item.getWeight());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void dropItem(Item item) {
+        List<Item> newList = inventory
+                .stream()
+                .filter(e -> item.getName().equals(e.getName()))
+                .collect(Collectors.toList());
+
+        setWeight(weight + newList.get(0).getWeight());
         setInventory((ArrayList<Item>) newList);
     }
 
-    public int attack(String selectedItem){
-        int dmg = 0;
-        while(dmg == 0) {
-            listItems();
-            System.out.println(">> Select you're Item");
-            Item item = getInventory().stream().filter(it -> it.getName().equals(selectedItem)).findAny().orElse(null);
-            if (item != null){
-                dmg = item.getDmg();
-            } else {
-                System.out.println("Item doesn't exist");
-            }
+    public Item checkIfItemExists(String selectedItem){
+        Item item = getInventory()
+                .stream()
+                .filter(it -> it.getName().equals(selectedItem)).findAny().orElse(null);
+        if (item != null) {
+            return item;
+        } else {
+            return null;
         }
-        return dmg;
     }
 
-    public void listItems(){
+    public void listItems() {
         this.inventory.stream().forEach(System.out::println);
     }
 }
