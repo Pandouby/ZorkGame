@@ -13,6 +13,11 @@ public class Door {
         this.lock = lock;
     }
 
+    public Door(Room room1, Room room2) {
+        this.room1 = room1;
+        this.room2 = room2;
+    }
+
     public Room getOtherRoom(Room room) {
         if(room == room1){
             return room2;
@@ -43,5 +48,9 @@ public class Door {
 
     public void setLock(Lock lock) {
         this.lock = lock;
+    }
+
+    public boolean unlockDoor(Item key) {
+        return lock.lockUnlock(key);
     }
 }
