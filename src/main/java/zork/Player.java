@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Player {
-    private int health;
+    private double health;
     private ArrayList<Item> inventory;
     private String name;
-    private int weight;
+    private double weight;
 
     public Player(int health, ArrayList<Item> inventory, String name) {
-        Item punch = new Item("Your own fists", "PUNCH", 0, 10);
+        Item punch = new Item("Your own fists", "PUNCH", 0, 10, 0);
         this.health = health;
         this.inventory = inventory;
         this.name = name;
@@ -19,11 +19,11 @@ public class Player {
         this.weight = 100;
     }
 
-    public int getHealth() {
+    public double getHealth() {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 
@@ -72,5 +72,10 @@ public class Player {
 
     public void listItems(){
         this.inventory.stream().forEach(System.out::println);
+    }
+
+    public double getResistance(){
+        int resistance = 0;
+        List<Item>
     }
 }

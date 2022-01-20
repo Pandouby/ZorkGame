@@ -39,7 +39,7 @@ public class Fight {
             enemy.setHealth(enemy.getHealth() - dmg);
             System.out.println("Enemy is attacking...");
             int temp = (Math.random() <= 0.5) ? 1 : 2;
-            player.setHealth(player.getHealth() - enemy.getDamage() * temp);
+            player.setHealth(player.getHealth() - (enemy.getDamage() * temp) + player.getResistance());
             System.out.println("You have this much HP: " + player.getHealth());
             if (enemy.getHealth() < 0 && player.getHealth() > 0) {
                 playerWin = true;
@@ -56,5 +56,9 @@ public class Fight {
             System.out.println("YOU LOSE");
         }
         scanner.close();
+    }
+
+    private Item getHighestResistance(){
+        double resistance = player.getInventory().stream().max(item -> item.get).getAsDouble;
     }
 }
