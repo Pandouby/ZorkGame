@@ -1,10 +1,23 @@
 package zork;
 
+import zork.riddle.QuadraticEquation;
+import zork.riddle.Riddle;
+import zork.rooms.Room;
+
+import java.util.Scanner;
+
 public class Zork2 {
 
 	public static void main(String[] args) {
-		Game zorkgame = new Game();
-		zorkgame.play();
+		/*
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to zork\n name: ");
+		Game zorkgame = new Game(scanner.nextLine());
+		zorkgame.play();*/
+
+		Riddle riddle = new QuadraticEquation();
+
+		riddle.start();
 	}
 
 }

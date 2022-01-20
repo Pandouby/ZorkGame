@@ -1,14 +1,24 @@
 package zork;
 
-public class Items {
+public class Item {
     private String description;
     private String name;
     private int weight;
+    private int dmg;
 
-    public Items(String description, String name, int weight) {
+    public Item(String description, String name, int weight, int dmg) {
         this.description = description;
         this.name = name;
+        this.dmg = dmg;
         this.weight = weight;
+    }
+
+    public int getDmg() {
+        return dmg;
+    }
+
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
     }
 
     public String getDescription() {
@@ -25,5 +35,13 @@ public class Items {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 }
