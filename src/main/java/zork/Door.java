@@ -44,4 +44,8 @@ public class Door {
     public void setLock(Lock lock) {
         this.lock = lock;
     }
+
+    public boolean unlockDoor(Item key) {
+        return lock.lockUnlock(key);
+    }
 }

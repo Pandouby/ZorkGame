@@ -35,17 +35,11 @@ public class Lock {
 
     public Boolean lockUnlock (Item key) {
         if(this.key == null) {
-            if(locked){
-                locked = false;
-            }else {
-                locked = true;
-            }
-        }else if(this.key.equals(key)){
-            if(locked){
-                locked = false;
-            }else {
-                locked = true;
-            }
+            if(riddle.start()){
+                locked = !locked;
+            };
+        }else if(this.key == key){
+            locked =! locked;
         }
         return locked;
     }
