@@ -1,7 +1,5 @@
 package zork.riddle;
 
-import javax.sound.midi.Soundbank;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class QuadraticEquation implements Riddle{
@@ -21,7 +19,7 @@ public class QuadraticEquation implements Riddle{
         Scanner scanner = new Scanner(System.in);
         while(!solved) {
             String answer = scanner.next();
-            if(answer.equals("")) {
+            if(answer.equals(" ")) {
                 solved = true;
                 System.out.println("You solved the riddle");
             }else {
