@@ -1,15 +1,19 @@
 package zork;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Fight {
     private Enemy enemy;
     private Player player;
-    private String winner;
+    private Scanner keyBoard;
 
-    public Fight(Enemy enemy, Player player) {
+    public Fight(Enemy enemy, Player player, Scanner keyBoard) {
         this.enemy = enemy;
         this.player = player;
+        this.keyBoard = keyBoard;
     }
 
     public Enemy getEnemy() {
@@ -28,8 +32,46 @@ public class Fight {
         this.player = player;
     }
 
-    public void attackPlayer(){
-        this.player.listItems();
-        System.out.println(">> Selecct you're Item");
+    public void fight() {
+        boolean playerWin = true;
+        while (player.getHealth() > 0 || enemy.getHealth() > 0) {
+            System.out.println("Select your Item: ");
+            player.listItems();
+            String selectedItem = keyBoard.nextLine();
+            Item itemSelected = player.checkIfItemExists(selectedItem);
+            if (itemSelected == null){
+                while (itemSelected == null){
+                    String newName = keyBoard.nextLine();
+                    itemSelected = player.checkIfItemExists(newName);
+                }
+            }
+            System.out.println("You have made this much damage: " + itemSelected.getDmg());
+            enemy.setHealth(enemy.getHealth() - itemSelected.getDmg());
+            System.out.println("Enemy is attacking...");
+            int temp = (Math.random() <= 0.5) ? 1 : 2;
+            player.setHealth(player.getHealth() - (enemy.getDamage() * temp * getHighestResistance().getResistance()));
+            System.out.println("You have this much HP: " + player.getHealth());
+            if (enemy.getHealth() < 0 && player.getHealth() > 0) {
+                playerWin = true;
+                break;
+            } else if (enemy.getHealth() > 0 && player.getHealth() < 0) {
+                playerWin = false;
+                break;
+            }
+            System.out.println("Enemy has " + enemy.getHealth() + "HP");
+        }
+        if (playerWin) {
+            System.out.println("YOU WIN");
+        } else {
+            System.out.println("YOU LOSE");
+        }
+    }
+
+    private Item getHighestResistance(){
+        Item resistance = player.getInventory()
+                .stream()
+                .min(Comparator.comparing(item -> item.getResistance()))
+                .get();
+        return resistance;
     }
 }
