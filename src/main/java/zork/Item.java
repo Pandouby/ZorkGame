@@ -5,14 +5,14 @@ public class Item {
     private String name;
     private int weight;
     private int dmg;
-    private double resistance;
+    private double resitence;
 
-    public Item(String description, String name, int weight, int dmg, double resistance) {
+    public Item(String description, String name, int weight, int dmg, double resitence) {
         this.description = description;
         this.name = name;
         this.dmg = dmg;
         this.weight = weight;
-        this.resistance = resistance;
+        this.resitence = resitence;
     }
 
     public int getDmg() {
@@ -47,11 +47,11 @@ public class Item {
         this.weight = weight;
     }
 
-    public double getResistance() {
-        return resistance;
+    public double getResitence() {
+        return resitence;
     }
 
-    public void setResistance(double resistance) {
-        this.resistance = resistance;
+    public void setResitence(double resitence) {
+        this.resitence = resitence;
     }
 }

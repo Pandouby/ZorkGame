@@ -73,9 +73,4 @@ public class Player {
     public void listItems(){
         this.inventory.stream().forEach(System.out::println);
     }
-
-    public double getResistance(){
-        int resistance = 0;
-        List<Item>
-    }
 }
