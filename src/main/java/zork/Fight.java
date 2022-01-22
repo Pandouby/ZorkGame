@@ -32,7 +32,7 @@ public class Fight {
         this.player = player;
     }
 
-    public void fight() {
+    public boolean fight() {
         boolean playerWin = true;
         while (player.getHealth() > 0 || enemy.getHealth() > 0) {
             System.out.println("Select your Item: ");
@@ -65,9 +65,10 @@ public class Fight {
         } else {
             System.out.println("YOU LOSE");
         }
+        return playerWin;
     }
 
-    private Item getHighestResistance(){
+    public Item getHighestResistance(){
         Item resistance = player.getInventory()
                 .stream()
                 .min(Comparator.comparing(item -> item.getResistance()))

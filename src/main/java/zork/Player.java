@@ -12,7 +12,7 @@ public class Player {
     private double weight;
 
     public Player(double health, ArrayList<Item> inventory, String name) {
-        Item punch = new Item("Your own fists", "PUNCH", 0, 10, 0);
+        Item punch = new Item("Your own fists", "PUNCH", 0, 10, 1);
         this.health = health;
         this.inventory = inventory;
         this.name = name;
@@ -84,6 +84,6 @@ public class Player {
     }
 
     public void listItems() {
-        this.inventory.stream().forEach(System.out::println);
+        this.inventory.stream().forEach(item -> System.out.println(item.getName()));
     }
 }

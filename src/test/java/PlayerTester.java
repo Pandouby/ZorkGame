@@ -1,13 +1,9 @@
-import junit.framework.Assert;
-import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import zork.Item;
 import zork.Player;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static junit.framework.TestCase.*;
 
 public class PlayerTester {
