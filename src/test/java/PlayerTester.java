@@ -37,6 +37,7 @@ public class PlayerTester {
         player.dropItem(item);
         assertEquals(100.0, player.getWeight());
         assertTrue(player.getInventory().size() == 1);
+        player.listItems();
     }
 
     @Test

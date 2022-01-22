@@ -65,10 +65,10 @@ public class Player {
     public void dropItem(Item item) {
         List<Item> newList = inventory
                 .stream()
-                .filter(e -> item.getName().equals(e.getName()))
+                .filter(e -> !item.getName().equals(e.getName()))
                 .collect(Collectors.toList());
 
-        setWeight(weight + newList.get(0).getWeight());
+        setWeight(weight + item.getWeight());
         setInventory((ArrayList<Item>) newList);
     }
 
