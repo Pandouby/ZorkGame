@@ -67,12 +67,15 @@ public class Player {
                 .stream()
                 .filter(e -> !item.getName().equals(e.getName()))
                 .collect(Collectors.toList());
-
-        setWeight(weight + item.getWeight());
-        setInventory((ArrayList<Item>) newList);
+        if (!item.getName().equals("PUNCH")) {
+            setWeight(weight + item.getWeight());
+            setInventory((ArrayList<Item>) newList);
+        } else {
+            System.out.println("You can't drop you're hands ;)");
+        }
     }
 
-    public Item checkIfItemExists(String selectedItem){
+    public Item checkIfItemExists(String selectedItem) {
         Item item = getInventory()
                 .stream()
                 .filter(it -> it.getName().equals(selectedItem)).findAny().orElse(null);
