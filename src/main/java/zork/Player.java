@@ -78,12 +78,10 @@ public class Player {
     public Item checkIfItemExists(String selectedItem) {
         Item item = getInventory()
                 .stream()
-                .filter(it -> it.getName().equals(selectedItem)).findAny().orElse(null);
-        if (item != null) {
-            return item;
-        } else {
-            return null;
-        }
+                .filter(it -> it.getName().equals(selectedItem))
+                .findAny()
+                .orElse(null);
+        return item;
     }
 
     public void listItems() {

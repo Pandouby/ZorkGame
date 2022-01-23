@@ -44,7 +44,7 @@ public class PlayerTester {
     @DisplayName("check if item exists in Inventory")
     public void check(){
         player.addToInventory(item3);
-        assertEquals("Sword" ,player.checkIfItemExists("Sword").getName());
-
+        assertEquals("Sword", player.checkIfItemExists("Sword").getName());
+        assertEquals(null, player.checkIfItemExists("Random"));
     }
 }
