@@ -51,10 +51,10 @@ public class Fight {
             int temp = (Math.random() <= 0.5) ? 1 : 2;
             player.setHealth(player.getHealth() - (enemy.getDamage() * temp * getHighestResistance().getResistance()));
             System.out.println("You have this much HP: " + player.getHealth());
-            if (enemy.getHealth() < 0 && player.getHealth() > 0) {
+            if (enemy.getHealth() <= 0 && player.getHealth() > 0) {
                 playerWin = true;
                 break;
-            } else if (enemy.getHealth() > 0 && player.getHealth() < 0) {
+            } else if (enemy.getHealth() > 0 && player.getHealth() <= 0) {
                 playerWin = false;
                 break;
             }
