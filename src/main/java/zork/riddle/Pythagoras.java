@@ -1,6 +1,5 @@
 package zork.riddle;
 
-import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 public class Pythagoras implements Riddle {

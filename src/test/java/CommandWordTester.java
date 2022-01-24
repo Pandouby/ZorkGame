@@ -3,6 +3,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import zork.Command;
 import zork.CommandWords;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
