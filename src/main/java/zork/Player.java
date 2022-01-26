@@ -16,7 +16,7 @@ public class Player {
         this.inventory = inventory;
         this.name = name;
         this.addToInventory(punch);
-        this.weight = 100;
+        this.weight = 3;
     }
 
     public double getHealth() {

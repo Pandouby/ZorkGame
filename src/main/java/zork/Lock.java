@@ -20,6 +20,10 @@ public class Lock {
         locked = true;
     }
 
+    public Lock(){
+        locked = false;
+    }
+
     public Riddle getRiddle() {
         return riddle;
     }
