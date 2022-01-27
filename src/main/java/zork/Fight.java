@@ -45,10 +45,12 @@ public class Fight {
             }
             System.out.println("You have made this much damage: " + itemSelected.getDmg());
             enemy.setHealth(enemy.getHealth() - itemSelected.getDmg());
-            System.out.println("Enemy is attacking...");
-            int temp = (Math.random() <= 0.5) ? 1 : 2;
-            player.setHealth(player.getHealth() - (enemy.getDamage() * temp * getHighestResistance().getResistance()));
-            System.out.println("You have this much HP: " + player.getHealth());
+            if(!(enemy.getHealth() <= 0)){
+                System.out.println("Enemy is attacking...");
+                int temp = (Math.random() <= 0.5) ? 1 : 2;
+                player.setHealth(player.getHealth() - (enemy.getDamage() * temp * getHighestResistance().getResistance()));
+                System.out.println("You have this much HP: " + player.getHealth());
+            }
             if (enemy.getHealth() <= 0 && player.getHealth() > 0) {
                 playerWin = true;
                 break;
