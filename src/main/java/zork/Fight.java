@@ -79,6 +79,7 @@ public class Fight {
                 .stream()
                 .min(Comparator.comparing(item -> item.getResistance()))
                 .get();
+        System.out.println(resistance.getName());
         return resistance;
     }
 }

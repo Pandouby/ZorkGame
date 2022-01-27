@@ -27,31 +27,30 @@ public class FightTester {
     Fight fight2;
 
     @BeforeEach
-    public void init() throws IOException {
+    public void init() {
         //Scanner for input
-        String inputMessage = "Sword\n"
-                + "Sword\n"
-                + "Sword\n"
-                + "Sword\n"
-                + "Sword\n"
-                + "Sword";
+        String inputMessage = "sword\n"
+                + "sword\n"
+                + "sword\n"
+                + "sword\n"
+                + "sword\n"
+                + "sword";
 
         keyBoard = new Scanner(new ByteArrayInputStream(inputMessage.getBytes(StandardCharsets.UTF_8)));
         //Add Player
         player = new Player(100.0, new ArrayList<>(), "TestPlayer");
         toWeak = new Player(100.0, new ArrayList<>(), "TestPlayer");
         //Make Items
-        item = new Item("Test Item", "Tester", 10, 20, 0.5);
-        item2 = new Item("Key", "Tester", 10, 0, 1);
-        item3 = new Item("Shield", "Shield", 30, 0, 0.1);
-        item4 = new Item("Kill", "Sword", 10, 90, 0.7);
-        Item itemForTheWeak = new Item("Kill but doesn't acutally", "Sword", 10, 0, 1);
+        //item = new Item("Test Item", "Tester", 1, 20, 0.5);
+        //item2 = new Item("Key", "Tester", 1, 0, 1);
+        item3 = new Item("Shield", "Shield", 1, 0, 0.1);
+        item4 = new Item("Kill", "Sword", 1, 90, 0.7);
+        Item itemForTheWeak = new Item("Kill but doesn't acutally", "Sword", 1, 0, 1);
         //Add enemy
         enemyWeak = new Enemy("GOBLINO", 100.0, 0.0, item);
         toStrongEnemy = new Enemy("El Dragon De la selva", 100.0, 90.0, item);
         //Add to Player class
-        player.addToInventory(item);
-        player.addToInventory(item2);
+        //player.addToInventory(item2);
         player.addToInventory(item3);
         player.addToInventory(item4);
 
@@ -66,6 +65,7 @@ public class FightTester {
     @Test
     @DisplayName("get highest percentage resistance")
     public void testGetResistance() {
+        System.out.println("HERE");
         System.out.println(fightPlayer.getHighestResistance().getResistance());
         assertTrue(fightPlayer.getHighestResistance().getResistance() == 0.1);
     }
@@ -73,6 +73,7 @@ public class FightTester {
     @Test
     @DisplayName("test Fight, outcome should be Player wins")
     public void testFight() {
+        //fightPlayer.getPlayer().listItems();
         assertTrue(fightPlayer.fight());
         assertEquals(100.0, fightPlayer.getPlayer().getHealth());
         assertEquals(-80.0, fightPlayer.getEnemy().getHealth());
