@@ -18,7 +18,7 @@ public class QuadraticEquation implements Riddle {
     public boolean riddle(Scanner keyBoard) {
         while (!solved) {
             String answer = keyBoard.nextLine();
-            if (answer.equals("there's no answer")) {
+            if (answer.equals("no solution")) {
                 solved = true;
                 System.out.println("You solved the riddle");
                 break;

@@ -77,7 +77,7 @@ public class Player {
     public Item checkIfItemExists(String selectedItem) {
         Item item = getInventory()
                 .stream()
-                .filter(it -> it.getName().equals(selectedItem))
+                .filter(it -> it.getName().toLowerCase().equals(selectedItem))
                 .findAny()
                 .orElse(null);
         return item;
