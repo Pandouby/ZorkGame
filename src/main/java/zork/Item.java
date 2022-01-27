@@ -1,5 +1,13 @@
 package zork;
 
+
+/**
+ * @Author: Alex Smolders & Silvan Dubach
+ * @Date: 27.01.22
+ * @Version: 1.1
+ *
+ */
+
 public class Item {
     private String description;
     private String name;
