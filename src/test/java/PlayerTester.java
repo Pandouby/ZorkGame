@@ -1,13 +1,9 @@
-import junit.framework.Assert;
-import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import zork.Item;
 import zork.Player;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static junit.framework.TestCase.*;
 
 public class PlayerTester {
@@ -41,13 +37,14 @@ public class PlayerTester {
         player.dropItem(item);
         assertEquals(100.0, player.getWeight());
         assertTrue(player.getInventory().size() == 1);
+        player.listItems();
     }
 
     @Test
     @DisplayName("check if item exists in Inventory")
     public void check(){
         player.addToInventory(item3);
-        assertEquals("Sword" ,player.checkIfItemExists("Sword").getName());
-
+        assertEquals("Sword", player.checkIfItemExists("Sword").getName());
+        assertEquals(null, player.checkIfItemExists("Random"));
     }
 }

@@ -1,6 +1,5 @@
 package zork;
 
-import java.lang.constant.Constable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,12 +11,12 @@ public class Player {
     private double weight;
 
     public Player(double health, ArrayList<Item> inventory, String name) {
-        Item punch = new Item("Your own fists", "PUNCH", 0, 10, 0);
+        Item punch = new Item("Your own fists", "PUNCH", 0, 10, 1);
         this.health = health;
         this.inventory = inventory;
         this.name = name;
         this.addToInventory(punch);
-        this.weight = 100;
+        this.weight = 3;
     }
 
     public double getHealth() {
@@ -65,25 +64,26 @@ public class Player {
     public void dropItem(Item item) {
         List<Item> newList = inventory
                 .stream()
-                .filter(e -> item.getName().equals(e.getName()))
+                .filter(e -> !item.getName().equals(e.getName()))
                 .collect(Collectors.toList());
-
-        setWeight(weight + newList.get(0).getWeight());
-        setInventory((ArrayList<Item>) newList);
-    }
-
-    public Item checkIfItemExists(String selectedItem){
-        Item item = getInventory()
-                .stream()
-                .filter(it -> it.getName().equals(selectedItem)).findAny().orElse(null);
-        if (item != null) {
-            return item;
+        if (!item.getName().equals("PUNCH")) {
+            setWeight(weight + item.getWeight());
+            setInventory((ArrayList<Item>) newList);
         } else {
-            return null;
+            System.out.println("You can't drop you're hands ;)");
         }
     }
 
+    public Item checkIfItemExists(String selectedItem) {
+        Item item = getInventory()
+                .stream()
+                .filter(it -> it.getName().toLowerCase().equals(selectedItem))
+                .findAny()
+                .orElse(null);
+        return item;
+    }
+
     public void listItems() {
-        this.inventory.stream().forEach(System.out::println);
+        this.inventory.stream().forEach(item -> System.out.println(item.getName()));
     }
 }

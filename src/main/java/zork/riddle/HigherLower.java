@@ -7,30 +7,31 @@ public class HigherLower implements Riddle {
     public boolean solved;
 
     @Override
-    public boolean start() {
+    public boolean start(Scanner keyboard) {
         System.out.println("Guess the number from 1 - 100");
         rndmNumber = (int) (100 * Math.random());
-        return riddle();
+        return riddle(keyboard);
     }
 
     @Override
-    public boolean riddle() {
-        Scanner scanner = new Scanner(System.in);
-        while(!solved) {
-            int answer = scanner.nextInt();
+    public boolean riddle(Scanner keyboard) {
+        while (!solved) {
+            String answer = keyboard.nextLine();
 
-            if(answer == rndmNumber){
+            if (Integer.valueOf(answer) == rndmNumber) {
                 solved = true;
                 System.out.println("You solved the riddle");
-            } else if(rndmNumber < answer) {
+            } else if (rndmNumber < Integer.valueOf(answer)) {
                 solved = false;
                 System.out.println("The number is smaller");
+            } else if (answer.equals("quit riddle")) {
+                break;
+
             } else {
                 solved = false;
                 System.out.println("The number is larger");
             }
         }
-        scanner.close();
         return solved;
     }
 }

@@ -36,4 +36,12 @@ public class Enemy {
     public void setDamage(double damage) {
         this.damage = damage;
     }
+
+    public Item getLoot() {
+        return loot;
+    }
+
+    public void setLoot(Item loot) {
+        this.loot = loot;
+    }
 }

@@ -1,9 +1,7 @@
 package zork;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Fight {
     private Enemy enemy;
@@ -32,7 +30,7 @@ public class Fight {
         this.player = player;
     }
 
-    public void fight() {
+    public boolean fight() {
         boolean playerWin = true;
         while (player.getHealth() > 0 || enemy.getHealth() > 0) {
             System.out.println("Select your Item: ");
@@ -47,14 +45,16 @@ public class Fight {
             }
             System.out.println("You have made this much damage: " + itemSelected.getDmg());
             enemy.setHealth(enemy.getHealth() - itemSelected.getDmg());
-            System.out.println("Enemy is attacking...");
-            int temp = (Math.random() <= 0.5) ? 1 : 2;
-            player.setHealth(player.getHealth() - (enemy.getDamage() * temp * getHighestResistance().getResistance()));
-            System.out.println("You have this much HP: " + player.getHealth());
-            if (enemy.getHealth() < 0 && player.getHealth() > 0) {
+            if(!(enemy.getHealth() <= 0)){
+                System.out.println("Enemy is attacking...");
+                int temp = (Math.random() <= 0.5) ? 1 : 2;
+                player.setHealth(player.getHealth() - (enemy.getDamage() * temp * getHighestResistance().getResistance()));
+                System.out.println("You have this much HP: " + player.getHealth());
+            }
+            if (enemy.getHealth() <= 0 && player.getHealth() > 0) {
                 playerWin = true;
                 break;
-            } else if (enemy.getHealth() > 0 && player.getHealth() < 0) {
+            } else if (enemy.getHealth() > 0 && player.getHealth() <= 0) {
                 playerWin = false;
                 break;
             }
@@ -65,9 +65,10 @@ public class Fight {
         } else {
             System.out.println("YOU LOSE");
         }
+        return playerWin;
     }
 
-    private Item getHighestResistance(){
+    public Item getHighestResistance(){
         Item resistance = player.getInventory()
                 .stream()
                 .min(Comparator.comparing(item -> item.getResistance()))
