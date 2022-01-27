@@ -4,7 +4,7 @@ import zork.rooms.Room;
 
 /**
  * @Author: Alex Smolders & Silvan Dubach
- * @Date:
+ * @Date: 27.01.22
  * @Version: 1.1
  *
  */
@@ -25,8 +25,8 @@ public class Door {
 
     /**
      *
-     * @param room
-     * @return
+     * @param current room
+     * @return other room connected to door
      */
     public Room getOtherRoom(Room room) {
         if(room == room1){

@@ -3,6 +3,13 @@ package zork;
 import zork.riddle.Riddle;
 import java.util.Scanner;
 
+/**
+ * @Author: Alex Smolders & Silvan Dubach
+ * @Date: 27.01.22
+ * @Version: 1.1
+ *
+ */
+
 public class Lock {
     private Riddle riddle;
     private Item key;
@@ -40,6 +47,11 @@ public class Lock {
         this.locked = locked;
     }
 
+    /**
+     *
+     * @param key from player invetory
+     * @return if the door is unlocked
+     */
     public Boolean lockUnlock (Item key) {
         if(this.key == null) {
             if(riddle.start(this.keyBoard)){
