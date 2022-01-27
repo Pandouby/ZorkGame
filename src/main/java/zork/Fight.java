@@ -32,6 +32,12 @@ public class Fight {
 
     public boolean fight() {
         boolean playerWin = true;
+
+        if(player.getHealth() < 100){
+            System.out.println("Player has regenerated his health");
+            player.setHealth(100);
+        }
+        
         while (player.getHealth() > 0 || enemy.getHealth() > 0) {
             System.out.println("Select your Item: ");
             player.listItems();
