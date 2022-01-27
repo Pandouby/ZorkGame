@@ -2,6 +2,12 @@ package zork;
 
 import zork.rooms.Room;
 
+/**
+ * @Author: Alex Smolders & Silvan Dubach
+ * @Date:
+ * @Version: 1.1
+ *
+ */
 public class Door {
     private Room room1;
     private Room room2;
@@ -17,6 +23,11 @@ public class Door {
         this(room1, room2, null);
     }
 
+    /**
+     *
+     * @param room
+     * @return
+     */
     public Room getOtherRoom(Room room) {
         if(room == room1){
             return room2;
