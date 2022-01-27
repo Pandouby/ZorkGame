@@ -3,6 +3,11 @@ package zork;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * @Author: Alex Smolders & Silvan Dubach
+ * @Date: 27.01.2022
+ * This class is used to initiate the fight between the player and the monster. Tracks winner and Loser
+ */
 public class Fight {
     private Enemy enemy;
     private Player player;
@@ -30,6 +35,11 @@ public class Fight {
         this.player = player;
     }
 
+    /**
+     * Here's where the logic of the fight takes, place until one dies.
+     * It handles inputs
+     * @return
+     */
     public boolean fight() {
         boolean playerWin = true;
 
@@ -74,6 +84,10 @@ public class Fight {
         return playerWin;
     }
 
+    /**
+     * Gets the lowest percentage of resistance for the shielding of the player
+     * @return
+     */
     public Item getHighestResistance(){
         Item resistance = player.getInventory()
                 .stream()

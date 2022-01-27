@@ -4,12 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @Author: Alex Smolders & Silvan Dubach
+ * @Date: 27.01.2022
+ * This class is used to keep track of the inventory of the player
+ */
 public class Player {
     private double health;
     private ArrayList<Item> inventory;
     private String name;
     private double weight;
 
+    /**
+     *
+     * @param health
+     * @param inventory
+     * @param name
+     */
     public Player(double health, ArrayList<Item> inventory, String name) {
         Item punch = new Item("Your own fists", "PUNCH", 0, 10, 1);
         this.health = health;
@@ -51,6 +62,11 @@ public class Player {
         this.weight = weight;
     }
 
+    /**
+     * This function adds Items to the player's inventory, while being in the perfect weight range
+     * @param item
+     * @return boolean
+     */
     public Boolean addToInventory(Item item) {
         if (weight - item.getWeight() >= 0) {
             inventory.add(item);
@@ -61,6 +77,10 @@ public class Player {
         }
     }
 
+    /**
+     * Drops items out of player's inventory, takes it out of the list
+     * @param item
+     */
     public void dropItem(Item item) {
         List<Item> newList = inventory
                 .stream()
@@ -74,6 +94,11 @@ public class Player {
         }
     }
 
+    /**
+     * Checks if the given Item exists in the List
+     * @param selectedItem
+     * @return boolean
+     */
     public Item checkIfItemExists(String selectedItem) {
         Item item = getInventory()
                 .stream()
@@ -83,6 +108,9 @@ public class Player {
         return item;
     }
 
+    /**
+     * Prints all items in the current inventory
+     */
     public void listItems() {
         this.inventory.stream().forEach(item -> System.out.println(item.getName()));
     }
