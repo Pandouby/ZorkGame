@@ -45,7 +45,7 @@ public class Lock {
             if(riddle.start(this.keyBoard)){
                 locked = !locked;
             }
-        }else if(this.key.getName() == key.getName()){
+        }else if(this.key == key){
             locked =! locked;
         }
         return locked;
